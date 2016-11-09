@@ -108,28 +108,28 @@ int main(int argc, char* argv[]) {
      po::value<double>()->value_name("FLOAT")->default_value(0., "0"),
      "reduced thickness parameter")
     ("fluctuation,k",
-     po::value<double>()->value_name("FLOAT")->default_value(1., "1"),
+     po::value<double>()->value_name("FLOAT")->default_value(3., "3"),
      "gamma fluctuation shape parameter")
     ("nucleon-width,w",
-     po::value<double>()->value_name("FLOAT")->default_value(.5, "0.5"),
+     po::value<double>()->value_name("FLOAT")->default_value(.45, "0.45"),
      "Gaussian nucleon width [fm]")
     ("nucleon-min-dist,d",
      po::value<double>()->value_name("FLOAT")->default_value(0., "0"),
      "minimum nucleon-nucleon distance [fm]")
     ("mean-coeff,m",
-     po::value<double>()->value_name("FLOAT")->default_value(1., "1."),
+     po::value<double>()->value_name("FLOAT")->default_value(0., "0."),
      "rapidity mean coefficient")
     ("std-coeff,s",
      po::value<double>()->value_name("FLOAT")->default_value(4., "4."),
      "rapidity std coefficient")
     ("skew-coeff,t",
-     po::value<double>()->value_name("FLOAT")->default_value(1., "1."),
+     po::value<double>()->value_name("FLOAT")->default_value(6., "6."),
      "rapidity skew coefficient")
     ("jacobian,j",
      po::value<double>()->value_name("FLOAT")->default_value(0.8, "0.8"),
      "<pt>/<mt> used in Jacobian")
     ("normalization,n",
-     po::value<double>()->value_name("FLOAT")->default_value(1., "1"),
+     po::value<double>()->value_name("FLOAT")->default_value(120., "120"),
      "normalization factor");
 
   OptDesc coll_opts{"collision options"};

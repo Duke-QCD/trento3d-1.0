@@ -3,6 +3,9 @@
 
 #include <cmath>
 #include <vector>
+#include <gsl/gsl_fft_complex.h>
+#define REAL(z,i) ((z)[2*(i)])
+#define IMAG(z,i) ((z)[2*(i)+1])
 
 double const sqrt2 = std::sqrt(2);
 constexpr double TINY = 1e-12;
@@ -74,4 +77,49 @@ class fast_eta2y {
 
 };
 
+class cumulant_generating{
+private:
+	size_t const N;
+	double * data, * dsdy;
+	double eta_max;
+	double deta;
+	double center;
+	
+public:
+	cumulant_generating(): N(64), data(new double[2*N]), dsdy(new double[2*N]){};
+	void calculate_dsdy(double mean, double std, double skew){
+		double k1, k2, k3, amp, arg;
+		// adaptive eta_max = 3.33*std;
+		center=mean;
+		eta_max = std*3.33;
+		deta = 2.*eta_max/(N-1.);
+		double fftmean = eta_max/std;
+    	for(size_t i=0;i<N;i++)
+   		{
+        	k1 = M_PI*(i-N/2.0)/eta_max*std;
+			k2 = k1*k1;
+			k3 = k2*k1;
+
+        	amp = std::exp(-k2/2.0);
+        	arg = fftmean*k1+skew/6.0*k3*amp;
+        
+			REAL(data,i) = amp*std::cos(arg);
+        	IMAG(data,i) = amp*std::sin(arg);
+    	}
+   		gsl_fft_complex_radix2_forward(data, 1, N);
+    
+    	for(size_t i=0;i<N;i++)
+    	{
+        	dsdy[i] = REAL(data,i)*(2.0*static_cast<double>(i%2 == 0)-1.0);
+    	}
+	}
+	double interp_dsdy(double y){
+		y = y-center;
+		if (y < -eta_max || y >= eta_max) return 0.0;
+		double xy = (y+eta_max)/deta;
+		size_t iy = std::floor(xy);
+		double ry = xy-iy;
+		return dsdy[iy]*(1.-ry) + dsdy[iy+1]*ry;
+	}
+};
 #endif

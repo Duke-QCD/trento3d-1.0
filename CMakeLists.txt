@@ -11,6 +11,11 @@ endif()
 find_package(Boost 1.50 REQUIRED COMPONENTS filesystem program_options system)
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
+# Find and use GSL.
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/CMake) 
+FIND_PACKAGE(GSL REQUIRED)
+include_directories(${GSL_INCLUDE_DIRS} ${GSLCBLAS_INCLUDE_DIRS})
+
 # Search for the HDF5 C++ library.  The CMake FindHDF5 package does not work
 # correctly for C++, because it will report success if it finds only the C
 # library and not C++.  It also uses the rather unfortunate 'h5c++' compiler

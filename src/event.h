@@ -134,6 +134,9 @@ class Event {
   /// fast eta to y transformer.
   fast_eta2y eta2y_;
 
+  /// cumulant generating approach
+  cumulant_generating cgf_;
+
   /// Nuclear thickness grids TA and TB.
   Grid TA_, TB_;
 

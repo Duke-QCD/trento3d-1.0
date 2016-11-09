@@ -67,6 +67,7 @@ Event::Event(const VarMap& var_map)
       xymax_(.5*nsteps_*dxy_),
       etamax_(.5*neta_*deta_),
       eta2y_(var_map["jacobian"].as<double>(), etamax_, deta_),
+	  cgf_(),
       TA_(boost::extents[nsteps_][nsteps_]),
       TB_(boost::extents[nsteps_][nsteps_]),
       TR_(boost::extents[nsteps_][nsteps_][1]),
@@ -184,13 +185,15 @@ void Event::compute_reduced_thickness(GenMean gen_mean) {
         auto mean = mean_coeff_ * mean_function(ta, tb, exp_ybeam_);
         auto std = std_coeff_ * std_function(ta, tb);
         auto skew = skew_coeff_ * skew_function(ta, tb);
-        auto mid_norm = skew_normal_function(0., mean, std, skew);
-
+		cgf_.calculate_dsdy(mean, std, skew);
+		//auto mid_norm = skew_normal_function(0., mean, std, skew);
+		auto mid_norm = cgf_.interp_dsdy(0.);
         for (int ieta = 0; ieta < neta_; ++ieta) {
             auto eta = -etamax_ + ieta*deta_;
             auto rapidity = eta2y_.rapidity(eta);
             auto jacobian = eta2y_.Jacobian(eta);
-            auto rapidity_dist = skew_normal_function(rapidity, mean, std, skew);
+            //auto rapidity_dist = skew_normal_function(rapidity, mean, std, skew);
+			auto rapidity_dist = cgf_.interp_dsdy(rapidity);
             density_[iy][ix][ieta] = t * rapidity_dist / mid_norm * jacobian;
         }
       }
