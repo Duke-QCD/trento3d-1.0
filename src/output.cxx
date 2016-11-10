@@ -73,7 +73,8 @@ void write_text_file(const fs::path& output_dir, int width,
       // Write all row elements except the last with a space delimiter afterwards.
       do {
         ofs << *iter << ' ';
-      } while (++iter != --row.end());
+		iter++;
+      } while (iter != row.end());
 
       // Write the last element and a linebreak.
       ofs << *iter << '\n';

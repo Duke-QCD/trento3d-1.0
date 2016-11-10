@@ -85,7 +85,8 @@ class Event {
   const Grid3D& density_grid() const {
     if (is3D())
       return density_;
-    return TR_;
+	else
+	  return TR_;
   }
 
  private:
