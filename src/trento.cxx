@@ -159,7 +159,7 @@ int main(int argc, char* argv[]) {
      po::value<double>()->value_name("FLOAT")->default_value(0.2, "0.2"),
      "transverse step size [fm]")
     ("eta-max",
-     po::value<double>()->value_name("FLOAT")->default_value(0., "0.0"),
+     po::value<double>()->value_name("FLOAT")->default_value(0.0, "0.0"),
      "pseudorapidity max \n(eta grid from -max to +max)")
     ("eta-step",
      po::value<double>()->value_name("FLOAT")->default_value(0.5, "0.5"),

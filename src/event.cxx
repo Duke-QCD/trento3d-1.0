@@ -63,7 +63,7 @@ Event::Event(const VarMap& var_map)
       dxy_(var_map["xy-step"].as<double>()),
       deta_(var_map["eta-step"].as<double>()),
       nsteps_(std::ceil(2.*var_map["xy-max"].as<double>()/dxy_)),
-      neta_(std::ceil(2.*var_map["eta-max"].as<double>()/deta_)),
+      neta_(std::ceil(2.*var_map["eta-max"].as<double>()/deta_)+1),
       xymax_(.5*nsteps_*dxy_),
       etamax_(.5*neta_*deta_),
       eta2y_(var_map["jacobian"].as<double>(), etamax_, deta_),
@@ -76,7 +76,7 @@ Event::Event(const VarMap& var_map)
   // configuration. The possibilities are defined above.  See the header for
   // more information.
   auto p = var_map["reduced-thickness"].as<double>();
-
+  std::cout << neta_ << std::endl;
   if (std::fabs(p) < TINY) {
     compute_reduced_thickness_ = [this]() {
       compute_reduced_thickness(geometric_mean);

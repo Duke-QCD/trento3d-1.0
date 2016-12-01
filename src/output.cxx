@@ -67,18 +67,19 @@ void write_text_file(const fs::path& output_dir, int width,
   // fixed-width) so that trailing zeros are omitted.  This significantly
   // increases output speed and saves disk space since many grid elements are
   // zero.
+  bool is3d;
+  if (event.density_grid().shape()[2] == 1) is3d = false;
+  else is3d = true; 
+
+
   for (const auto& slice : event.density_grid()) {
     for (const auto& row : slice) {
-      auto&& iter = row.begin();
-      // Write all row elements except the last with a space delimiter afterwards.
-      do {
-        ofs << *iter << ' ';
-		iter++;
-      } while (iter != row.end());
-
-      // Write the last element and a linebreak.
-      ofs << *iter << '\n';
+      for (const auto& item : row) {
+		 ofs << item << " ";
+	  }
+	  if (is3d) ofs << std::endl;
     }
+	if (!is3d) ofs << std::endl;
   }
 }
 
