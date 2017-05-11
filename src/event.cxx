@@ -65,7 +65,7 @@ Event::Event(const VarMap& var_map)
       nsteps_(std::ceil(2.*var_map["xy-max"].as<double>()/dxy_)),
       neta_(std::ceil(2.*var_map["eta-max"].as<double>()/deta_)+1),
       xymax_(.5*nsteps_*dxy_),
-      etamax_(.5*neta_*deta_),
+      etamax_(var_map["eta-max"].as<double>()),
       eta2y_(var_map["jacobian"].as<double>(), etamax_, deta_),
 	  cgf_(),
       TA_(boost::extents[nsteps_][nsteps_]),

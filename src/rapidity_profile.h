@@ -27,13 +27,7 @@ double inline std_function(double ta, double tb){
 double inline skew_function(double ta, double tb){
   return (ta - tb)/std::max(ta + tb, TINY);
 }
-///----------------------------------------------------------------------------------------------///
 
-
-double inline skew_normal_function(double eta, double xi, double omega, double alpha){
-  double x = (eta - xi) / omega;
-  return std::exp(-x*x/2.) * (1. + std::erf(alpha * x / sqrt2));
-}
 
 /// A fast pseudorapidity to rapidity transformer using pretabulated values
 /// Output both y(eta) and dy/deta(eta)
@@ -48,7 +42,7 @@ class fast_eta2y {
   fast_eta2y(double J, double etamax, double deta)
       : etamax_(etamax),
         deta_(deta),
-        neta_(std::ceil(2.*etamax_/deta_)),
+        neta_(std::ceil(2.*etamax_/deta_)+1),
         y_(neta_, 0.),
         dydeta_(neta_, 0.) {
 
@@ -86,7 +80,7 @@ private:
 	double center;
 	
 public:
-	cumulant_generating(): N(64), data(new double[2*N]), dsdy(new double[2*N]){};
+	cumulant_generating(): N(256), data(new double[2*N]), dsdy(new double[2*N]){};
 	void calculate_dsdy(double mean, double std, double skew){
 		double k1, k2, k3, amp, arg;
 		// adaptive eta_max = 3.33*std;
