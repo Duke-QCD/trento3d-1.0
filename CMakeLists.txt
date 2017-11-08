@@ -8,9 +8,9 @@ if(NOT CXX11)
 endif()
 
 # Find and use Boost.
-find_package(Boost 1.50 REQUIRED COMPONENTS filesystem program_options system)
+find_package(Boost 1.60 REQUIRED COMPONENTS filesystem program_options system)
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-
+message(STATUS "${Boost_INCLUDE_DIRS}, ${Boost_LIBRARIES}")
 # Find and use GSL.
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src/CMake) 
 FIND_PACKAGE(GSL REQUIRED)
@@ -24,7 +24,7 @@ find_library(HDF5_CXX_LIB hdf5_cpp)
 if("${HDF5_CXX_LIB}" STREQUAL "HDF5_CXX_LIB-NOTFOUND")
   message(STATUS "HDF5 C++ library not found")
 else()
-  message(STATUS "Found HDF5 C++ library: ${HDF5_CXX_LIB}")
+  message(STATUS "Found HDF5 C++ library: ${HDF5_C_LIB}")
   # Having found the C++ lib, also locate the header and C lib.
   find_path(HDF5_INCLUDE_DIRS H5Cpp.h)
   include_directories(SYSTEM ${HDF5_INCLUDE_DIRS})

@@ -89,6 +89,13 @@ class Event {
 	  return TR_;
   }
 
+  /// returns grid steps
+  const double& dxy() const
+  { return dxy_; }
+
+  const double& deta() const
+  { return deta_; }
+
  private:
   /// Compute a nuclear thickness function (TA or TB) onto a grid for a given
   /// nucleus and nucleon profile.  This destroys any data previously contained
@@ -107,7 +114,7 @@ class Event {
   /// allow the compiler to fully inline the GenMean function and only require a
   /// single "virtual" function call per event.
   std::function<void()> compute_reduced_thickness_;
- 
+
   /// Compute observables that require a second pass over the reduced thickness grid.
   void compute_observables();
 
@@ -116,13 +123,14 @@ class Event {
 
   /// Normalization factor.
   const double norm_;
-  
+
   /// Beam energy sqrt(s) and beam rapidity y.
   const double beam_energy_, exp_ybeam_;
-  
+
   /// Rapidity distribution cumulant coefficients.
   const double mean_coeff_, std_coeff_, skew_coeff_;
-  
+  const int skew_type_;
+
   /// Grid step size.
   const double dxy_, deta_;
 
@@ -131,7 +139,7 @@ class Event {
 
   /// Grid xy maximum (half width).
   const double xymax_, etamax_;
-  
+
   /// fast eta to y transformer.
   fast_eta2y eta2y_;
 

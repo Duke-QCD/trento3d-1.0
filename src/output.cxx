@@ -69,7 +69,7 @@ void write_text_file(const fs::path& output_dir, int width,
   // zero.
   bool is3d;
   if (event.density_grid().shape()[2] == 1) is3d = false;
-  else is3d = true; 
+  else is3d = true;
 
 
   for (const auto& slice : event.density_grid()) {
@@ -141,11 +141,13 @@ void HDF5Writer::operator()(
   // Create the new dataset and write the grid.
   auto dataset = file_.createDataSet(name, datatype, dataspace, proplist);
   dataset.write(grid.data(), datatype);
-  
+
   // Write event attributes.
   hdf5_add_scalar_attr(dataset, "b", impact_param);
   hdf5_add_scalar_attr(dataset, "npart", event.npart());
   hdf5_add_scalar_attr(dataset, "mult", event.multiplicity());
+  hdf5_add_scalar_attr(dataset, "dxy", event.dxy());
+  hdf5_add_scalar_attr(dataset, "deta", event.deta());
   for (const auto& ecc : event.eccentricity())
     hdf5_add_scalar_attr(dataset, "e" + std::to_string(ecc.first), ecc.second);
 }
