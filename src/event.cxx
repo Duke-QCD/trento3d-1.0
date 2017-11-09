@@ -96,7 +96,6 @@ Event::Event(const VarMap& var_map)
   // configuration. The possibilities are defined above.  See the header for
   // more information.
   auto p = var_map["reduced-thickness"].as<double>();
-  std::cout << neta_ << std::endl;
   if (std::fabs(p) < TINY) {
     compute_reduced_thickness_ = [this]() {
       compute_reduced_thickness(geometric_mean);
