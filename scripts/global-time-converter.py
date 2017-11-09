@@ -3,7 +3,39 @@ import numpy as np, h5py, math
 import sys, os, warnings
 import matplotlib.pyplot as plt
 
-little_below_one = 1 - 1e-5
+def help():
+	"""
+  This script transforms the initial condition from
+  (tau, x, y, eta) frame to (t, x, y, z) frame. This 
+  conversion assumes longitudinal Bjorken expansion
+  and transverse still.
+
+  The entropy density in longitudinal-local frame at
+  constant proper time tau0 is:
+    s(tau0, x, y, eta) = s0(x,y,eta)/tau0 
+                       = ns0(x,y,eta) <-- trento3d 
+
+  Assuming Bjorken expansion for a short proper time,
+    s(tau, x, y, eta) = 1/tau*s0(x,y,eta) 
+                      = tau0/tau*ns0(x,y,eta) -- (1)
+
+  Expression (1) is transformed into (t, x, y, z) via,
+    s'(t0, x, y, z) = 1/tau*ns0(x, y, eta)
+                tau = sqrt(t0^2 - z^2)
+                eta = 1/2*ln[(t0+z)/(t0-z)]
+  where tau0 is absorbed into normalization of ns0
+  (see --normalization option of the trento3d model).
+
+  Usage:  
+    {:s} trento3d-hdf5-output t0 [list-of-event-id-to-convert]
+
+  For example, to convert all events to t0=1fm/c:
+    {:s} ic.hdf5 1.0
+  To convert only events #2 and #3 to t0=1fm/c:
+    {:s} ic.hdf5 1.0 2 3
+"""
+	print(help.__doc__.format(__file__, __file__, __file__))
+
 tiny = 1e-9
 
 def convert(dataset, t0):
@@ -15,8 +47,8 @@ def convert(dataset, t0):
 	x = np.linspace(-Lx, Lx, Nx)
 	y = np.linspace(-Ly, Ly, Ny)
 	eta = np.linspace(-Leta, Leta, Neta)
-	# set maximum z-range, about 6-unit of rapidity
-	z_max = t0*little_below_one
+	# set maximum z-range, about +/- 6-unit of rapidity
+	z_max = t0*math.tanh(6.)
 	zarray = np.linspace(-z_max, z_max, Neta)
 
 	new_field = np.zeros_like(field)
@@ -46,30 +78,7 @@ def plot(x, y, z, s):
 
 def main():
 	if len(sys.argv) <= 2:
-		print(
-"""Help Info:
-
-This script transforms the initial condition from (tau, x, y, eta) frame
-to (t, x, y, z) frame. This conversion assumes longitudinal Bjorken expansion
-and transverse still.
-
-The entropy density in longitudinal-local frame at constant proper time tau0:
-	s(tau0, x, y, eta) = s0(x,y,eta)/tau0 = ns0(x,y,eta) <-- TRENTO-3d 
-
-Assuming Bjorken expansion for a short amount of time,
-	s(tau, x, y, eta) = 1/tau*s0(x,y,eta) = tau0/tau*ns0(x,y,eta)
-
-It is transformed to the same quantity but expressed in (t=tau0, x, y, z) via,
-s'(t0, x, y, z) = 1/tau(t0, z)*ns0(x, y, eta(t0, z))
-where tau0 is absorbed into normalization of ns0 (see --normalization option
-of the TRENTo-3d model).
-""")
-		print('Usage: ', sys.argv[0] + " [ic-file] [t0] [list-of-event-id-to-convert]")
-		print('For example, convert all events to t0=1fm/c: ', 
-				sys.argv[0] + " ic.hdf5 1.0")
-		print('For example, only convert events 2, 3: ', 
-				sys.argv[0] + " ic.hdf5 1.0 2 3")
-		print('')
+		help()
 		exit()
 	f = h5py.File(sys.argv[1], 'r')
 	t0 = float(sys.argv[2])

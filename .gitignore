@@ -1,2 +1,4 @@
 build/
-ic*/
+*.hdf5
+*.h5
+*.hdf

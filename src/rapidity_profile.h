@@ -1,3 +1,8 @@
+// TRENTO: Reduced Thickness Event-by-event Nuclear Topology
+// Copyright 2015 Jonah E. Bernhard, J. Scott Moreland
+// TRENTO3D: Three-dimensional extension of TRENTO by Weiyao Ke
+// MIT License
+
 #ifndef ETA_H
 #define ETA_H
 

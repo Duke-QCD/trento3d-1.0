@@ -3,6 +3,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 import h5py, sys
 
+def help():
+	
+	"""
+  This script plots 
+    (1) transverse intergated entropy/density as function of rapidity
+    (2) Projection of entropy/density onto x-y (eta=0) plane
+    (3) ............................. onto y-eta (x=0) plane.
+    (4) ............................. onto x-eta (y=0) plane.
+
+  Usage:  
+    {:s} trento3d-hdf5-output [list-of-event-id-to-convert]
+
+  For example, to view all events:
+    {:s} ic.hdf5
+  To view only events #2 and #3:
+    {:s} ic.hdf5 2 3
+"""
+	print(help.__doc__.format(__file__, __file__, __file__))
+
 def plot(dataset):
 	fig, axes = plt.subplots(
 		nrows=2, ncols=2,
@@ -41,16 +60,7 @@ def plot(dataset):
 
 def main():
 	if len(sys.argv) <= 1:
-		print(
-"""This script plots 
-	(1) transverse intergated entropy/density as function of rapidity
-	(2) Projection of entropy/density onto x-y (eta=0) plane.
-	(3) ............................. onto y-eta (x=0) plane.
-	(4) ............................. onto x-eta (y=0) plane.
-""")
-		print('Usage: ', sys.argv[0] + " [ic-file] [list-of-event-id-to-view]")
-		print('For example, to view all events: ', sys.argv[0] + " ic.hdf5")
-		print('For example, to view events 0, 1: ', sys.argv[0] + " ic.hdf5 0 1")
+		help()
 		exit()
 	f = h5py.File(sys.argv[1], 'r')
 	elist = ['event_{}'.format(index) for index in sys.argv[2:]] \

@@ -1,5 +1,6 @@
 // TRENTO: Reduced Thickness Event-by-event Nuclear Topology
 // Copyright 2015 Jonah E. Bernhard, J. Scott Moreland
+// TRENTO3D: Three-dimensional extension of TRENTO by Weiyao Ke
 // MIT License
 
 #include <iostream>
@@ -30,6 +31,7 @@ void print_version() {
 
 void print_bibtex() {
   std::cout <<
+	"TRENTO:\n"
     "@article{Moreland:2014oya,\n"
     "      author         = \"Moreland, J. Scott and Bernhard, Jonah E. and Bass,\n"
     "                        Steffen A.\",\n"
@@ -45,7 +47,26 @@ void print_bibtex() {
     "      archivePrefix  = \"arXiv\",\n"
     "      primaryClass   = \"nucl-th\",\n"
     "      SLACcitation   = \"%%CITATION = ARXIV:1412.4708;%%\",\n"
-    "}\n";
+    "}\n\n";
+
+  std::cout <<
+	"TRENTO3D:\n"
+    "@article{Ke:2016jrd,\n"
+    "      author         = \"Ke, Weiyao and Moreland, J. Scott and Bernhard, \n"
+	"                         Jonah E. and Bass, Steffen A.\",\n"
+    "      title          = \"{Constraints on rapidity-dependent initial conditions\n"
+    "                        from charged particle pseudorapidity densities and\n"
+    "                        two-particle correlations}\",\n"
+    "      journal        = \"Phys. Rev.\",\n"
+    "      volume         = \"C96\",\n"
+    "      year           = \"2017\",\n"
+    "      number         = \"4\",\n"
+    "      pages          = \"044912\",\n"
+    "      doi            = \"10.1103/PhysRevC.96.044912\",\n"
+    "      eprint         = \"1610.08490\",\n"
+    "      archivePrefix  = \"arXiv\",\n"
+    "      primaryClass   = \"nucl-th\",\n"
+    "      SLACcitation   = \"%%CITATION = ARXIV:1610.08490;%%\"\n";
 }
 
 // TODO
@@ -125,7 +146,7 @@ int main(int argc, char* argv[]) {
     ("skew-coeff,t",
      po::value<double>()->value_name("FLOAT")->default_value(0., "0."),
      "rapidity skew coefficient")
-	 ("skew-type,v",
+	 ("skew-type,r",
       po::value<int>()->value_name("INT")->default_value(1, "1"),
       "rapidity skew type: 1: relative, 2: absolute, other: no skew")
     ("jacobian,j",
@@ -187,7 +208,8 @@ int main(int argc, char* argv[]) {
   // Will be used several times.
   const std::string usage_str{
     "usage: trento [options] projectile projectile [number-events = 1]\n"};
-
+  const std::string usage_str3d{
+    "To operate in 3D mode, make sure --eta-max is nonzero.\n"};
 
   try {
     // Initialize a VarMap (boost::program_options::variables_map).
@@ -202,7 +224,7 @@ int main(int argc, char* argv[]) {
     // Must do this _before_ po::notify() since that can throw exceptions.
     if (var_map.count("help")) {
       std::cout
-        << usage_str
+        << usage_str << usage_str3d
         << "\n"
            "projectile = { p | d | Cu | Cu2 | Au | Au2 | Pb | U | U2 | U3 }\n"
         << usage_opts
@@ -254,7 +276,8 @@ int main(int argc, char* argv[]) {
   catch (const po::required_option&) {
     // Handle this exception separately from others.
     // This occurs e.g. when the program is excuted with no arguments.
-    std::cerr << usage_str << "run 'trento --help' for more information\n";
+    std::cerr << usage_str << usage_str3d
+			  << "run 'trento --help' for more information\n";
     return 1;
   }
   catch (const std::exception& e) {
