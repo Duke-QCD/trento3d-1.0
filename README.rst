@@ -9,7 +9,7 @@ For a documentation of the original 2D T\ :sub:`R`\ ENTo model, please read the 
 
 |
 
-   |image1| |image2|
+|image1| |image2|
 
    **Figure 1**: *An event from* T\ :sub:`R`\ ENTo3D. *Left: the event projected on to* :math:`x-y` *plane at midrapidty; right: same event projected on to* :math:`y-\eta` *plane.*
 
@@ -91,7 +91,7 @@ T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (:math:`\eta=0`"
    Absolute skewness, :math:`\gamma_0 (T_A-T_B)`"
 
 .. |image1| image:: doc/_static/event.png
-   :width: 45%
+   :width: 30%
 .. |image2| image:: doc/_static/event-eta.png
-   :width: 45%
+   :width: 30%
 
