@@ -1,6 +1,3 @@
-.. role:: underline
-   :class: underline
-
 ===================
 T\ :sub:`R`\ ENTo3D
 ===================
@@ -23,7 +20,7 @@ For a documentation of the original 2D T\ :sub:`R`\ ENTo model, please read the 
 
 First, install the dependencies: a C++11 compiler, Boost, GSL and HDF5. Then download the trento3d source and compile with CMake:
 
-.. code-block:: bash
+.. code-block:: shell
 
    mkdir build && cd build
    cmake ..
@@ -38,21 +35,21 @@ T\ :sub:`R`\ ENTo3D keeps all the options in the original 2D model with addition
 
 Examples:
 
-* Genereate 10 Pb Pb events at :math:`\sqrt{s} = 5020` GeV in 2D mode and output to a :code:`.hdf5` file
+* Genereate 10 Pb Pb events at $$\sqrt{s} = 5020$$ GeV in 2D mode and output to a :code:`.hdf5` file
 
-.. code-block:: bash
+.. code-block:: shell
 
    trento3d Pb Pb 10 -e 5020 -o PbPb.hdf5
 
 * Same as above but generate 3D initial condition with :math:`-10<\eta<10, d\eta=0.2`.
 
-.. code-block:: bash
+.. code-block:: shell
 
    trento3d Pb Pb 10 -e 5020 --eta-max=10.0 --eta-step=0.2 -o PbPb.hdf5
 
 * Use the absolute-skewness parametrization (see Table 2) instead of the relative-skewness parametrization, with skew coefficient :math:`\gamma_0=1.0`.
 
-.. code-block:: bash
+.. code-block:: shell
 
    trento3d Pb Pb 10 -e 5020 -r 2 -t 1.0 --eta-max=10.0 --eta-step=0.2 -o PbPb.hdf5
 
@@ -94,10 +91,7 @@ T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (:math:`\eta=0`"
    Absolute skewness, :math:`\gamma_0 (T_A-T_B)`"
 
 .. |image1| image:: doc/_static/event.png
-   :width: 49%
-   :alt: alternate text
-
+   :width: 45%
 .. |image2| image:: doc/_static/event-eta.png
-   :width: 49%
-
+   :width: 45%
 
