@@ -1,6 +1,6 @@
-===================
-T\ :sub:`R`\ ENTo-3D
-===================
+====================
+T\ :sub:`R`\ ENTo 3D
+====================
 
 *Three-dimensional Extended Reduced Thickness Event-by-event Nuclear Topology*
 
