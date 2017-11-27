@@ -12,7 +12,7 @@ For a documentation of the original 2D T\ :sub:`R`\ ENTo model, please read the 
 
    |image1| |image2|
 
-   **Figure 1**: *An event from* T\ :sub:`R`\ ENTo3D. *Left: the event projected on to* :math:`x-y` *plane at midrapidty; right: same event projected on to* *y*\ :sub:`η` *plane.*
+   **Figure 1**: *An event from* T\ :sub:`R`\ ENTo3D. *Left: the event projected on to* :math:`x-y` *plane at midrapidty; right: same event projected on to* *y*\ -η *plane.*
 
 |
 |
@@ -36,19 +36,19 @@ T\ :sub:`R`\ ENTo3D keeps all the options in the original 2D model with addition
 
 Examples:
 
-* Genereate 10 Pb Pb events at $$\sqrt{s} = 5020$$ GeV in 2D mode and output to a :code:`.hdf5` file
+* Genereate 10 Pb Pb events at *s*\ :sup:`1/2` = 5020 GeV in 2D mode and output to a :code:`.hdf5` file
 
 .. code-block:: shell
 
    trento3d Pb Pb 10 -e 5020 -o PbPb.hdf5
 
-* Same as above but generate 3D initial condition with -10<η<10, *d*η=0.2.
+* Same as above but generate 3D initial condition with -10<η<10, *d*\ η=0.2.
 
 .. code-block:: shell
 
    trento3d Pb Pb 10 -e 5020 --eta-max=10.0 --eta-step=0.2 -o PbPb.hdf5
 
-* Use the absolute-skewness parametrization (see Table 2) instead of the relative-skewness parametrization, with skew coefficient :math:`\gamma_0=1.0`.
+* Use the absolute-skewness parametrization (see Table 2) instead of the relative-skewness parametrization, with skew coefficient γ\ :sub:`0`\ = 1.0.
 
 .. code-block:: shell
 
@@ -59,16 +59,16 @@ Examples:
    :widths: 10, 10, 35
    :align: center
 
-   "-m, --mean-coeff", 1.0 (float>0), "rapidity mean coefficient :math:`\mu_0`"
-   "-s, --std-coeff", 3.0 (float>0), "rapidity std coefficient :math:`\sigma_0`"
-   "-t, --skew-coeff", 0.0 (float>0), "rapidity skew coefficient :math:`\gamma_0`"
+   "-m, --mean-coeff", 1.0 (float>0), "rapidity mean coefficient *μ*\ :sup:`0` "
+   "-s, --std-coeff", 3.0 (float>0), "rapidity std coefficient *σ*\ :sup:`0`"
+   "-t, --skew-coeff", 0.0 (float>0), "rapidity skew coefficient *γ*\ :sup:`0`"
    "-r, --skew-type", 1 (int), "
 					1 = relative skewness
 
 					2 = absolute skewness
 			
 					else = no skewness"
-   "-j, --jacobian", 0.8 (float>0), ":math:`\langle p_t/m_t \rangle` used in Jacobian *dy/d*η"
+   "-j, --jacobian", 0.8 (float>0), <\ *p*\ :sub:`t`\ /\ *m*\ :sub:`t`\ >` used in Jacobian *dy/d*\ η"
    "-e, --beam-energy", 2760 (float>0), "collision beam energy  *s*\ :sup:`1/2` [GeV], initializes cross section"
    "--eta-max",  0.0 (float) , "space-time rapidity maximum (η grid from -max to +max)"
    "--eta-step",  0.5 (float), "space-time rapidity step size"
