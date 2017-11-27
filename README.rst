@@ -85,11 +85,11 @@ T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (η=0) exactly. 
    :widths: 15, 30
    :align: center
 
-   "mean", "\ *μ*\ :sub:`0`\ /2 log (\ *T*\ :sub:`A` *e*\ :sup:`Y`\ + \ *T*\ :sub:`B` *e\ :sup:`-Y`* ) / (\ *T*\ :sub:`A` *e*\ :sup:`-Y`\ + \ *T*\ :sub:`B` *e*\ :sup:`Y`\ ), *Y* is the beam rapidity"
-   "standard deviation", ":math:`\sigma_0`"
-   "skewness",  "Relative skewness, :math:`\gamma_0 \frac{T_A-T_B}{T_A+T_B}` 
-     
-   Absolute skewness, :math:`\gamma_0 (T_A-T_B)`"
+   "mean", "\ *μ*\ :sub:`0`\ /2 log [(\ *T*\ :sub:`A` *e*\ :sup:`Y`\ + \ *T*\ :sub:`B` *e*\ :sup:`-Y` ) / (\ *T*\ :sub:`A` *e*\ :sup:`-Y`\ + \ *T*\ :sub:`B` *e*\ :sup:`Y`\ )], *Y* is the beam rapidity"
+   "standard deviation", *σ*\ :sub:`0`
+   "skewness",  "Relative skewness, *γ*\ :sub:`0` (\ *T*\ :sub:`A`\ - \ *T*\ :sub:`B`\  )/(\ *T*\ :sub:`A`\ + \ *T*\ :sub:`B`\ )
+   
+   Absolute skewness, *γ*\ :sub:`0` (\ *T*\ :sub:`A`\ - \ *T*\ :sub:`B`\  )"
 
 .. |image1| image:: doc/_static/event.png
    :width: 30%
