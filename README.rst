@@ -78,15 +78,14 @@ Examples:
 
 **Longitudinal extension**: 
 
-T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (η=0") exactly. At finite space-time rapidity, the entropy production is the product of its midrapidity value and a longitudinal profile function that varies at each transvese location. The profile is characterized by its first η-cumulants: mean, stadard deviationa and skewness. They are parametrized in terms of nuclear thickness function:
+T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (η=0) exactly. At finite space-time rapidity, the entropy production is the product of its midrapidity value and a longitudinal profile function that varies at each transvese location. The profile is characterized by its first η-cumulants: mean, stadard deviationa and skewness. They are parametrized in terms of nuclear thickness function:
 
 .. csv-table:: **Table 2**: cumulant parametrization
    :header: "Cumulants", "Parametrization"
    :widths: 15, 30
    :align: center
 
-   "mean", *μ*\ :sub:`0`\ /2 log (\ *T*\ :sub`A` *e*\ :sup:`Y`\ + \ *T*\ :sub`B` *e*\ :sup:`-\ *Y*\ `\ ) / (\ *T*\ :sub`A` *e*\ :sup:`-Y`\ + \ *T*\ :sub`B` *e*\ :sup:`\ *Y*\ `\ ), 
-	*Y* is the beam rapidity"
+   "mean", "\ *μ*\ :sub:`0`\ /2 log (\ *T*\ :sub`A` *e*\ :sup:`Y`\ + \ *T*\ :sub`B` *e*\ :sup:`-\ *Y*\ `\ ) / (\ *T*\ :sub`A` *e*\ :sup:`-Y`\ + \ *T*\ :sub`B` *e*\ :sup:`\ *Y*\ `\ ), *Y* is the beam rapidity"
    "standard deviation", ":math:`\sigma_0`"
    "skewness",  "Relative skewness, :math:`\gamma_0 \frac{T_A-T_B}{T_A+T_B}` 
      
