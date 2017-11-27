@@ -59,16 +59,16 @@ Examples:
    :widths: 10, 10, 35
    :align: center
 
-   "-m, --mean-coeff", 1.0 (float>0), "rapidity mean coefficient *μ*\ :sup:`0` "
-   "-s, --std-coeff", 3.0 (float>0), "rapidity std coefficient *σ*\ :sup:`0`"
-   "-t, --skew-coeff", 0.0 (float>0), "rapidity skew coefficient *γ*\ :sup:`0`"
+   "-m, --mean-coeff", 1.0 (float>0), "rapidity mean coefficient *μ*\ :sub:`0` "
+   "-s, --std-coeff", 3.0 (float>0), "rapidity std coefficient *σ*\ :sub:`0`"
+   "-t, --skew-coeff", 0.0 (float>0), "rapidity skew coefficient *γ*\ :sub:`0`"
    "-r, --skew-type", 1 (int), "
 					1 = relative skewness
 
 					2 = absolute skewness
 			
 					else = no skewness"
-   "-j, --jacobian", 0.8 (float>0), <\ *p*\ :sub:`t`\ /\ *m*\ :sub:`t`\ >` used in Jacobian *dy/d*\ η"
+   "-j, --jacobian", 0.8 (float>0), <\ *p*\ :sub:`t`\ /\ *m*\ :sub:`t`\ > used in Jacobian *dy/d*\ η"
    "-e, --beam-energy", 2760 (float>0), "collision beam energy  *s*\ :sup:`1/2` [GeV], initializes cross section"
    "--eta-max",  0.0 (float) , "space-time rapidity maximum (η grid from -max to +max)"
    "--eta-step",  0.5 (float), "space-time rapidity step size"
@@ -85,7 +85,8 @@ T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (η=0") exactly.
    :widths: 15, 30
    :align: center
 
-   "mean", ":math:`\frac{\mu_0}{2}\ln\left(\frac{T_A e^{y_b} + T_B e^{-y_b}}{T_A e^{-y_b} + T_B e^{y_b}}\right)`, :math:`y_b` is the beam rapidity"
+   "mean", *μ*\ :sub:`0`\ /2 log (\ *T*\ :sub`A` *e*\ :sup:`Y`\ + \ *T*\ :sub`B` *e*\ :sup:`-\ *Y*\ `\ ) / (\ *T*\ :sub`A` *e*\ :sup:`-Y`\ + \ *T*\ :sub`B` *e*\ :sup:`\ *Y*\ `\ ), 
+	*Y* is the beam rapidity"
    "standard deviation", ":math:`\sigma_0`"
    "skewness",  "Relative skewness, :math:`\gamma_0 \frac{T_A-T_B}{T_A+T_B}` 
      
