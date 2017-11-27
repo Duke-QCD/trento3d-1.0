@@ -12,7 +12,7 @@ For a documentation of the original 2D T\ :sub:`R`\ ENTo model, please read the 
 
    |image1| |image2|
 
-   **Figure 1**: *An event from* T\ :sub:`R`\ ENTo3D. *Left: the event projected on to* :math:`x-y` *plane at midrapidty; right: same event projected on to* :math:`y-\eta` *plane.*
+   **Figure 1**: *An event from* T\ :sub:`R`\ ENTo3D. *Left: the event projected on to* :math:`x-y` *plane at midrapidty; right: same event projected on to* *y*\ :sub:`η` *plane.*
 
 |
 |
@@ -42,7 +42,7 @@ Examples:
 
    trento3d Pb Pb 10 -e 5020 -o PbPb.hdf5
 
-* Same as above but generate 3D initial condition with :math:`-10<\eta<10, d\eta=0.2`.
+* Same as above but generate 3D initial condition with -10<η<10, *d*η=0.2.
 
 .. code-block:: shell
 
@@ -68,9 +68,9 @@ Examples:
 					2 = absolute skewness
 			
 					else = no skewness"
-   "-j, --jacobian", 0.8 (float>0), ":math:`\langle p_t/m_t \rangle` used in Jacobian :math:`dy/d\eta`"
-   "-e, --beam-energy", 2760 (float>0), "collision beam energy :math:`\sqrt{s}` [GeV], initializes cross section"
-   "--eta-max",  0.0 (float) , "space-time rapidity maximum (:math:`\eta` grid from -max to +max)"
+   "-j, --jacobian", 0.8 (float>0), ":math:`\langle p_t/m_t \rangle` used in Jacobian *dy/d*η"
+   "-e, --beam-energy", 2760 (float>0), "collision beam energy  *s*\ :sup:`1/2` [GeV], initializes cross section"
+   "--eta-max",  0.0 (float) , "space-time rapidity maximum (η grid from -max to +max)"
    "--eta-step",  0.5 (float), "space-time rapidity step size"
 
 |
@@ -78,7 +78,7 @@ Examples:
 
 **Longitudinal extension**: 
 
-T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (:math:`\eta=0`") exactly. At finite space-time rapidity, the entropy production is the product of its midrapidity value and a longitudinal profile function that varies at each transvese location. The profile is characterized by its first :math:`\eta`-cumulants: mean, stadard deviationa and skewness. They are parametrized in terms of nuclear thickness function:
+T\ :sub:`R`\ ENTo3D reproduces T\ :sub:`R`\ ENTo at midrapidity (η=0") exactly. At finite space-time rapidity, the entropy production is the product of its midrapidity value and a longitudinal profile function that varies at each transvese location. The profile is characterized by its first η-cumulants: mean, stadard deviationa and skewness. They are parametrized in terms of nuclear thickness function:
 
 .. csv-table:: **Table 2**: cumulant parametrization
    :header: "Cumulants", "Parametrization"
