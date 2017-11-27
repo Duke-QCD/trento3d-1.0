@@ -1,7 +1,6 @@
 ===================
 T\ :sub:`R`\ ENTo-3D
 ===================
-[include](<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/0.1/MathJax.js?config=TeX-MML-AM_CHTML'></script>)
 
 *Three-dimensional Extended Reduced Thickness Event-by-event Nuclear Topology*
 
