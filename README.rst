@@ -35,7 +35,7 @@ T\ :sub:`R`\ ENTo 3D keeps all the options in the original boost-invariant model
 
 Examples:
 
-* Genereate 10 Pb Pb events at *s*\ :sup:`1/2` = 5020 GeV in two-dimensional mode and output to a :code:`.hdf5` file
+* Genereate 10 Pb Pb events at *s*\ :sup:`1/2` = 5020 GeV in boost-invariant mode and output to a :code:`.hdf5` file
 
 .. code-block:: shell
 
