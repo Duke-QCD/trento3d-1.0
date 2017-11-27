@@ -67,7 +67,7 @@ Examples:
 					2 = absolute skewness
 			
 					else = no skewness"
-   "-j, --jacobian", 0.8 (float>0), <\ *p*\ :sub:`t`\ /\ *m*\ :sub:`t`\ > used in Jacobian *dy/d*\ η"
+   "-j, --jacobian", 0.8 (float>0), "<\ *p*\ :sub:`t`\ /\ *m*\ :sub:`t`\ > used in Jacobian *dy/d*\ η"
    "-e, --beam-energy", 2760 (float>0), "collision beam energy  *s*\ :sup:`1/2` [GeV], initializes cross section"
    "--eta-max",  0.0 (float) , "space-time rapidity maximum (η grid from -max to +max)"
    "--eta-step",  0.5 (float), "space-time rapidity step size"
