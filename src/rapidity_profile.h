@@ -139,9 +139,10 @@ public:
   }
 
   /// When interpolating the funtion, the mean is put back by simply shifting 
-  /// the function by y = y - mean
+  /// the function by y = y - mean + dy/2, the last term is correcting for
+  /// interpolating bin edge instead of bin center
   double interp_dsdy(double y){
-    y = y-center;
+    y = y-center+deta/2.;
     if (y < -eta_max || y >= eta_max) return 0.0;
     double xy = (y+eta_max)/deta;
     size_t iy = std::floor(xy);
