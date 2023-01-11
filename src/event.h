@@ -97,6 +97,16 @@ class Event {
   const double& deta() const
   { return deta_; }
 
+  const int& nsteps() const
+  { return nsteps_; }
+
+  const double& xymax() const
+  { return xymax_; }
+
+  const double& etamax() const
+  { return etamax_; }
+
+
  private:
   /// Compute a nuclear thickness function (TA or TB) onto a grid for a given
   /// nucleus and nucleon profile.  This destroys any data previously contained

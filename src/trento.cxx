@@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
      "HDF5 file or directory for text files")
     ("no-header", po::bool_switch(),
      "do not write headers to text files");
-
+    
   OptDesc phys_opts{"physical options"};
   phys_opts.add_options()
     ("reduced-thickness,p",
