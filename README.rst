@@ -1,8 +1,10 @@
 ====================
-T\ :sub:`R`\ ENTo 3D
+T\ :sub:`R`\ ENTo 3D 1.0
 ====================
 
 *Three-dimensional Extended Reduced Thickness Event-by-event Nuclear Topology*
+
+This is the first attempt at an extension of T\ :sub:`R`\ ENTo to three dimensions. This repo is listed for historical purposes and this version of T\ :sub:`R`\ ENTo 3D was used for the below publications. For the current 3D extension of T\ :sub:`R`\ ENTo please use the T\ :sub:`R`\ ENTo 3D 2.0 repo.
 
 A three-dimensional initial condition model for high-energy nuclear collisions. 
 For a documentation of the original boost-invariant T\ :sub:`R`\ ENTo model, please read the docs at `qcd.phy.duke.edu/trento <http://qcd.phy.duke.edu/trento>`_. For model details please refer to `PRC 92 011901 <https://doi.org/10.1103/PhysRevC.92.011901>`_, `PRC 96 044912 <https://doi.org/10.1103/PhysRevC.96.044912>`_.
