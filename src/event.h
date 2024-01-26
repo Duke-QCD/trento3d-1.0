@@ -106,6 +106,8 @@ class Event {
   const double& etamax() const
   { return etamax_; }
 
+  const int& neta() const
+  { return neta_; }
 
  private:
   /// Compute a nuclear thickness function (TA or TB) onto a grid for a given

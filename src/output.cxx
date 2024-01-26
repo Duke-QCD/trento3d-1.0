@@ -67,7 +67,7 @@ void write_text_file(const fs::path& output_dir, int width,
         << "# grid-nsteps = " << event.nsteps() << '\n'
         << "# grid-max = " << event.xymax() << '\n'
 	<< "# grid-step-eta = " << event.deta() << '\n'
-        << "# grid-nsteps-eta = " << event.nsteps() << '\n'
+        << "# grid-nsteps-eta = " << event.neta() << '\n'
         << "# grid-max-eta = " << event.etamax() << '\n';
 	
   }
